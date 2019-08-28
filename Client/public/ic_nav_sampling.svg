@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="36px" viewBox="0 0 48 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_nav_sampling</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-16.0%" y="-2.1%" width="132.0%" height="104.1%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="2" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0.137254902   0 0 0 0 0.149019608  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Brand/Collections" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="🏡-Collections/No-Collection" transform="translate(-26.000000, -160.000000)">
+            <g id="NavBar_Left" filter="url(#filter-1)" transform="translate(0.000000, 56.000000)">
+                <g id="Leftnav_item" transform="translate(0.000000, 90.000000)">
+                    <g id="Group-4" transform="translate(26.000000, 14.000000)">
+                        <rect id="ic_nav_sampling" x="0" y="0" width="48" height="36"></rect>
+                        <polygon id="Shape" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" points="12.0345803 10.076132 16.1107123 6 18.7272225 8.61671728 21.2847184 6.05922143 23.957344 8.73184705 26.6299696 6.05922143 29.2607675 8.68981225 31.9503727 6 36.0265047 10.076132 33.3340005 12.7686361 35.9223495 15.3569851 33.2459967 18.0333379 35.9223495 20.7096908 33.3712728 23.2607675 36.0265047 25.9159995 31.9503727 29.9921314 29.2978327 27.3395914 26.6376311 30 23.9650055 27.3273744 21.2923799 30 18.6974047 27.4052319 16.1107123 29.9921314 12.0345803 25.9159995 14.6241717 23.3264081 12 20.7022363 14.6763528 18.0258835 12 15.3495307 14.6537824 12.6955411 12.0343733 10.076132"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

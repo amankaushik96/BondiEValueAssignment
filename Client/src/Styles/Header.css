@@ -1,0 +1,21 @@
+.header {
+	height: 50px;
+	width: 100vw;
+	background-color: black;
+	position: fixed;
+	display: flex;
+
+	align-items: center;
+}
+
+.signin-button {
+	background-color: #007bff;
+	padding: 5px;
+	margin: 0;
+	border: none;
+	color: #fff;
+	right: 20px;
+	position: fixed;
+	border-radius: 0.25rem;
+	overflow: hidden;
+}

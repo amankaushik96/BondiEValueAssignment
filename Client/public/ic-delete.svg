@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/action/ic-delete</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icon/action/ic-delete" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M10,9 L8,9 L8,19 L16,19 L16,9 L14,9 L10,9 Z M9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 L14,4 C14.5522847,4 15,4.44771525 15,5 L15,7 L18,7 C18.5522847,7 19,7.44771525 19,8 C19,8.55228475 18.5522847,9 18,9 L18,19 C18,20.1045695 17.1045695,21 16,21 L8,21 C6.8954305,21 6,20.1045695 6,19 L6,9 C5.44771525,9 5,8.55228475 5,8 C5,7.44771525 5.44771525,7 6,7 L9,7 Z M11,7 L13,7 L13,6 L11,6 L11,7 Z" id="Combined-Shape" fill="#333340"></path>
+    </g>
+</svg>

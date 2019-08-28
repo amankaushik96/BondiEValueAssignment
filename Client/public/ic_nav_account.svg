@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="36px" viewBox="0 0 48 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_nav_account</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-16.0%" y="-2.1%" width="132.0%" height="104.1%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="2" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0.137254902   0 0 0 0 0.149019608  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Brand/Collections" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="🏡-Collections/No-Collection" transform="translate(-26.000000, -698.000000)">
+            <g id="NavBar_Left" filter="url(#filter-1)" transform="translate(0.000000, 56.000000)">
+                <g id="Leftnav_item" transform="translate(0.000000, 628.000000)">
+                    <g id="Group-8" transform="translate(26.000000, 14.000000)">
+                        <rect id="ic_nav_account" x="0" y="0" width="48" height="36"></rect>
+                        <g id="profile" transform="translate(11.000000, 5.000000)" stroke="#FFFFFF" stroke-width="1.5">
+                            <path d="M13,26 C5.82029825,26 0,20.1797017 0,13 C0,5.82029825 5.82029825,0 13,0 C20.1797017,0 26,5.82029825 26,13 C26,20.1797017 20.1797017,26 13,26 Z" id="Oval-12" stroke-linejoin="round" fill-rule="nonzero"></path>
+                            <circle id="Oval-10" cx="12.8645161" cy="9.03225806" r="3.83225806"></circle>
+                            <path d="M20.5290323,23.2645161 C20.5290323,19.0315208 17.0975115,15.6 12.8645161,15.6 C8.63152076,15.6 5.2,19.0315208 5.2,23.2645161" id="Path" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

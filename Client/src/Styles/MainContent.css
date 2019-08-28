@@ -1,0 +1,29 @@
+.main-order {
+	height: 100vh;
+	padding: 5px;
+	display: flex;
+}
+
+.sell-order {
+	font-size: 20px;
+	padding: 20px;
+	font-weight: bold;
+	background-color: #ccc;
+	flex-direction: column;
+	display: flex;
+	width: 50%;
+
+	border: 1px solid black;
+}
+
+.execute-order {
+	font-size: 20px;
+	padding: 20px;
+	font-weight: bold;
+	background-color: #ccc;
+	display: flex;
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	border: 1px solid black;
+}

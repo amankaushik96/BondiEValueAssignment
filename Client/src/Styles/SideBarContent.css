@@ -1,0 +1,52 @@
+.left-navigation {
+	position: relative;
+	width: 50vw;
+	height: calc(100vh - 50px);
+	overflow-y: scroll;
+}
+
+.left-navigation::-webkit-scrollbar {
+	background: #eee;
+	width: 5px;
+}
+
+.selecteditem {
+	background-color: #d4efff;
+}
+
+.left-navigation-header {
+	display: flex;
+	padding: 15px;
+}
+
+.left-navigation-contents {
+}
+
+.left-navigation-contents-item {
+	border-bottom: 1px solid #ccc;
+	padding: 15px;
+	cursor: pointer;
+}
+
+.left-navigation-contents-item:hover:not(.selecteditem) {
+	background-color: #ccc;
+}
+
+.left-navigation-contents-first {
+	font-size: 14px;
+	padding: 0 5px 0 5px;
+	font-weight: 600;
+}
+
+.left-navigation-contents-second {
+	font-size: 12px;
+	padding: 0 5px 0 5px;
+	color: rgb(140, 140, 231);
+	cursor: pointer;
+}
+.left-navigation-contents-third {
+	font-size: 12px;
+	padding: 0 5px 0 5px;
+	color: rgb(140, 140, 231);
+	cursor: pointer;
+}
