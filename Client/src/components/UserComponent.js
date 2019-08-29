@@ -8,7 +8,13 @@ import history from '../History';
 import axios from '../apis/requests';
 
 class UserComponent extends React.Component {
-	state = { user_id: '', soldItem: [], globalBuyList: [], userBuyOrders: [] };
+	state = {
+		user_id: '',
+		soldItem: [],
+		globalBuyList: [],
+		userBuyOrders: [],
+		executedOrders: []
+	};
 	getCurrentUserBidPrice = (res, email) => {
 		console.log('getCurrentUserBidPrice', res, email);
 		let maxVal = -10000000000000000000;
@@ -148,6 +154,10 @@ class UserComponent extends React.Component {
 					<SideBarContent
 						title="Bought items pending for approval"
 						userBuyOrders={this.state.userBuyOrders}
+					/>
+					<SideBarContent
+						title="Executed Orders"
+						userBuyOrders={this.state.executedOrders}
 					/>
 					<div className="content-infos">
 						<MainContent

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import '../Styles/MainContent.css';
 import axios from '../apis/requests';
+import ExecutionLayout from './SideBarContent';
 
 class MainContent extends Component {
 	state = { itemName: '', price: 0 };
@@ -69,17 +70,6 @@ class MainContent extends Component {
 							</Button>
 						</div>
 					</Form>
-				</div>
-				<div className="execute-order">
-					<div>
-						<Button
-							variant="primary"
-							type="submit"
-							style={{ width: '200px' }}
-						>
-							Execute All Orders
-						</Button>
-					</div>
 				</div>
 			</div>
 		);

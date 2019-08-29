@@ -108,7 +108,8 @@ class SideBarContent extends React.Component {
 				);
 			}
 			return arr;
-		} else {
+		}
+		if (this.props.title === 'Bought items pending for approval') {
 			let arr = [];
 			let items =
 				this.state.userBuyOrders && this.state.userBuyOrders.length > 0
@@ -125,7 +126,15 @@ class SideBarContent extends React.Component {
 							Min Price:{items[i].price}$
 						</div>
 						<div className="left-navigation-contents-second">
-							Bid price: {items[i].maxBidPrice}$
+							Max Bid price: {items[i].maxBidPrice}$
+						</div>
+
+						<div className="left-navigation-contents-third">
+							Max bid user: {items[i].maxBidPriceUser}
+						</div>
+						<div className="left-navigation-contents-third">
+							Your highest bid value:{' '}
+							{items[i].currentUserBidPrice}
 						</div>
 
 						<div
@@ -136,6 +145,7 @@ class SideBarContent extends React.Component {
 				);
 			}
 			return arr;
+		} else {
 		}
 	}
 	render() {
