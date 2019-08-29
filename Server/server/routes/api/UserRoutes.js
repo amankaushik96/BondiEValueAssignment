@@ -375,7 +375,6 @@ module.exports = app => {
                       resp[0].maxPricedBid !== undefined &&
                       resp[0].maxPricedBid.length > 0
                     ) {
-                      console.log(resp[0].maxPricedBid);
                       if (resp[0].maxPricedBid[0].bidPrice < bidPrice) {
                         latest_bidPrice = { email, bidPrice };
                       } else {
@@ -385,7 +384,13 @@ module.exports = app => {
                         });
                       }
                     } else {
-                      latest_bidPrice = { email, bidPrice };
+                      //modified here
+                      if (resp[0].price > bidPrice) {
+                        return res.send({
+                          message: `Your entered amount cannot be less than base price`,
+                          faultCode: '303'
+                        });
+                      } else latest_bidPrice = { email, bidPrice };
                     }
                     console.log(latest_bidPrice);
                     Products.findOneAndUpdate(
