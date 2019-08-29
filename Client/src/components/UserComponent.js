@@ -9,6 +9,18 @@ import axios from '../apis/requests';
 
 class UserComponent extends React.Component {
 	state = { user_id: '', soldItem: [], globalBuyList: [], userBuyOrders: [] };
+	getCurrentUserBidPrice = (res, email) => {
+		console.log('getCurrentUserBidPrice', res, email);
+		let maxVal = -10000000000000000000;
+		for (let i in res) {
+			if (res[i].email === email) {
+				if (parseFloat(res[i].bidPrice) > maxVal) {
+					maxVal = parseFloat(res[i].bidPrice);
+				}
+			}
+		}
+		return maxVal;
+	};
 	getSoldList = list => {
 		axios
 			.post('/fetchSoldItemForUser', {
@@ -87,6 +99,12 @@ class UserComponent extends React.Component {
 					let obj = {};
 					obj.itemName = data[i].itemName;
 					obj.price = data[i].price;
+					obj.maxBidPrice = data[i].maxPricedBid[0].bidPrice;
+					obj.maxBidPriceUser = data[i].maxPricedBid[0].email;
+					obj.currentUserBidPrice = this.getCurrentUserBidPrice(
+						data[i].bidUsers,
+						this.props.location.state.email
+					);
 					arr.push(obj);
 				}
 				this.setState({ userBuyOrders: arr });

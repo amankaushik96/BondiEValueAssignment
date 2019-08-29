@@ -3,6 +3,7 @@ import '../Styles/Signup.css';
 import { Form, Button } from 'react-bootstrap';
 import axios from '../apis/requests';
 import Header from './Header';
+import history from '../History';
 
 class Signup extends React.Component {
 	state = { email: '', firstName: '', password: '', lastName: '' };
@@ -21,6 +22,7 @@ class Signup extends React.Component {
 				})
 				.then(res => {
 					alert(res.data.message);
+					history.push('/');
 				})
 				.catch(err => {
 					console.log(err.message);

@@ -15,8 +15,9 @@ class SideBarContent extends React.Component {
 		axios
 			.post('/buyOrder', obj)
 			.then(succ => {
-				//make call here to fetch buy Orders
-				window.location.reload();
+				if (succ.data.faultCode) {
+					alert(succ.data.message);
+				} else window.location.reload();
 			})
 			.catch(err => {});
 	};
@@ -108,7 +109,6 @@ class SideBarContent extends React.Component {
 			}
 			return arr;
 		} else {
-			console.log('In update');
 			let arr = [];
 			let items =
 				this.state.userBuyOrders && this.state.userBuyOrders.length > 0
@@ -122,10 +122,12 @@ class SideBarContent extends React.Component {
 							Item name: {items[i].itemName}
 						</div>
 						<div className="left-navigation-contents-second">
-							Price:{items[i].price}$
+							Min Price:{items[i].price}$
+						</div>
+						<div className="left-navigation-contents-second">
+							Bid price: {items[i].maxBidPrice}$
 						</div>
 
-						<div className="left-navigation-contents-third"></div>
 						<div
 							className="left-navigation-contents-third"
 							style={{ paddingTop: '5px' }}

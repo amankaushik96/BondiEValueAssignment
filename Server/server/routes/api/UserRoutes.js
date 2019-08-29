@@ -379,10 +379,10 @@ module.exports = app => {
                       if (resp[0].maxPricedBid[0].bidPrice < bidPrice) {
                         latest_bidPrice = { email, bidPrice };
                       } else {
-                        latest_bidPrice = {
-                          email,
-                          bidPrice: resp[0].maxPricedBid[0].bidPrice
-                        };
+                        return res.send({
+                          message: `Your entered amount is less than max bid price: ${resp[0].maxPricedBid[0].bidPrice} `,
+                          faultCode: '303'
+                        });
                       }
                     } else {
                       latest_bidPrice = { email, bidPrice };
