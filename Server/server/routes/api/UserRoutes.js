@@ -768,7 +768,10 @@ module.exports = app => {
           for (let i in products) {
             if (products[i].executionStatus) {
               executed.push(products[i]);
-            } else {
+            } else if (
+              products[i].maxPricedBid &&
+              products[i].maxPricedBid.length > 0
+            ) {
               unExecuted.push(products[i]);
             }
           }
