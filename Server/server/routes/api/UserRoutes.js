@@ -265,7 +265,7 @@ module.exports = app => {
   });
   app.post('/api/account/fetchSoldItemForUser', (req, res, next) => {
     const { body } = req;
-    const { token } = body;
+    const { token, email } = body;
     console.log(token);
     UserSession.find(
       {
@@ -285,38 +285,57 @@ module.exports = app => {
             message: 'Unauthorized'
           });
         } else {
-          let { email } = req.body;
-          console.log(email);
-          UserInformation.find({ email: email })
-            .then(user => {
-              if (user && user.length > 0) {
-                let sellOrders = [];
-                for (let i = 0; i < user[0].sellOrders.length; i++) {
-                  sellOrders.push(user[0].sellOrders[i].orderID);
+          Products.find({ email })
+            .then(prods => {
+              if (prods && prods.length > 0) {
+                let list = [];
+                for (let i in prods) {
+                  if (prods[i].email === email && !prods[i].executionStatus) {
+                    list.push(prods[i]);
+                  }
                 }
-                console.log(sellOrders);
-                if (sellOrders.length > 0) {
-                  Products.find({ orderID: { $in: sellOrders } })
-                    .then(resp => {
-                      return res.send({
-                        success: true,
-                        message: 'Successfully Fetched',
-                        list: resp
-                      });
-                    })
-                    .catch(err => {
-                      console.log('error in products', err);
-                      return res.send({
-                        success: false,
-                        message: 'Internal Server Error'
-                      });
-                    });
-                }
+                return res.send({
+                  list
+                });
+              } else {
+                return res.send({
+                  success: false
+                });
               }
             })
-            .catch(err => {
-              console.log('error in userinfo');
-            });
+            .catch(err => {});
+          // let { email } = req.body;
+          // console.log(email);
+          // UserInformation.find({ email: email })
+          //   .then(user => {
+          //     if (user && user.length > 0) {
+          //       let sellOrders = [];
+          //       for (let i = 0; i < user[0].sellOrders.length; i++) {
+          //         sellOrders.push(user[0].sellOrders[i].orderID);
+          //       }
+          //       console.log(sellOrders);
+          //       if (sellOrders.length > 0) {
+          //         Products.find({ orderID: { $in: sellOrders } })
+          //           .then(resp => {
+          //             return res.send({
+          //               success: true,
+          //               message: 'Successfully Fetched',
+          //               list: resp
+          //             });
+          //           })
+          //           .catch(err => {
+          //             console.log('error in products', err);
+          //             return res.send({
+          //               success: false,
+          //               message: 'Internal Server Error'
+          //             });
+          //           });
+          //       }
+          //     }
+          //   })
+          //   .catch(err => {
+          //     console.log('error in userinfo');
+          //   });
         }
       }
     );
@@ -593,16 +612,27 @@ module.exports = app => {
                 if (buyOrders.length > 0) {
                   Products.find({ orderID: { $in: buyOrders } })
                     .then(buyres => {
-                      return res.send({
-                        message: 'Success',
-                        success: true,
-                        list: buyres
-                      });
+                      if (buyres && buyres.length > 0) {
+                        let list1 = [];
+                        for (let i in buyres) {
+                          if (!buyres[i].executionStatus) {
+                            console.log(buyres[i]);
+                            list1.push(buyres[i]);
+                            console.log('List is  ', list1);
+                          }
+                        }
+                        return res.send({
+                          message: 'Success',
+                          success: true,
+                          list: list1
+                        });
+                      }
                     })
                     .catch(err => {
                       return res.send({
                         message: 'Server Error',
-                        success: false
+                        success: false,
+                        err
                       });
                     });
                 } else {

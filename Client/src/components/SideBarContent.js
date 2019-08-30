@@ -166,7 +166,7 @@ class SideBarContent extends React.Component {
 							Status: {items[i].status}
 						</div>
 						<div className="left-navigation-contents-second">
-							Price bought: {items[i].price}$
+							Price {items[i].status}: {items[i].price}$
 						</div>
 						<div
 							className="left-navigation-contents-third"

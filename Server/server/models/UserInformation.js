@@ -21,14 +21,6 @@ var user_info = new mongoose.Schema({
         trim: true
       }
     }
-  ],
-  executedOrders: [
-    {
-      orderID: {
-        type: String,
-        trim: true
-      }
-    }
   ]
 });
 var UserInformation = mongoose.model('UserInformation', user_info);
