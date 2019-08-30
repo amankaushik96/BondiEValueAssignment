@@ -626,19 +626,14 @@ module.exports = app => {
   app.get('/api/account/executeAllOrders', (req, res, next) => {
     Products.find({})
       .then(products => {
-        let pendingExectionOrders = [],
-          info = [];
+        let pendingExectionOrders = [];
         if (products && products.length > 0) {
           for (let i in products) {
             if (
               products[i].maxPricedBid.length > 0 &&
               !products[i].executionStatus
             ) {
-              let executionProd = {};
               pendingExectionOrders.push(products[i].orderID);
-              executionProd.orderID = products[i].orderID;
-              executionProd.email = products[i].maxPricedBid[0].email;
-              info.push(executionProd);
             }
           }
           if (pendingExectionOrders.length > 0) {
@@ -647,7 +642,11 @@ module.exports = app => {
               { $set: { executionStatus: true } },
               { upsert: true }
             )
-              .then(executedOrders => {})
+              .then(executedOrders => {
+                return res.send({
+                  success: true
+                });
+              })
               .catch(err => {});
           } else {
             return res.send({
@@ -663,5 +662,29 @@ module.exports = app => {
         }
       })
       .then(err => {});
+  });
+  app.post('/api/account/getExecutedOrdersForAUser', (req, res, next) => {
+    UserSession.find(
+      {
+        _id: token,
+        isDeleted: false
+      },
+      (err, session) => {
+        if (err) {
+          return res.send({
+            success: false,
+            message: 'Internal Server Error'
+          });
+        }
+        if (session.length !== 1) {
+          return res.send({
+            success: false,
+            message: 'Unauthorized'
+          });
+        } else {
+          Products.find({});
+        }
+      }
+    );
   });
 };
