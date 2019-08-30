@@ -1,6 +1,5 @@
 import React from 'react';
 import '../Styles/UserComponent.css';
-import SideBar from './Sidebar';
 import SideBarContent from './SideBarContent';
 import MainContent from './MainContent';
 import TopBar from './TopBar';
@@ -16,7 +15,6 @@ class UserComponent extends React.Component {
 		executedOrders: []
 	};
 	getCurrentUserBidPrice = (res, email) => {
-		console.log('getCurrentUserBidPrice', res, email);
 		let maxVal = -10000000000000000000;
 		for (let i in res) {
 			if (res[i].email === email) {
@@ -114,6 +112,35 @@ class UserComponent extends React.Component {
 					arr.push(obj);
 				}
 				this.setState({ userBuyOrders: arr });
+			})
+			.catch(err => {
+				console.log(err);
+			});
+		axios
+			.post('/getExecutedOrdersForAUser', {
+				token: this.props.match.params.id,
+				email: this.props.location.state.email
+			})
+			.then(succ => {
+				let exBuy = succ.data.executedBuy;
+				let exSell = succ.data.executedSell;
+				let arr1 = [];
+				for (let i = 0; i < exBuy.length; i++) {
+					let obj = {};
+					obj.itemName = exBuy[i].itemName;
+					obj.price = exBuy[i].maxPricedBid[0].bidPrice;
+					obj.status = 'Bought';
+					arr1.push(obj);
+				}
+				for (let i = 0; i < exSell.length; i++) {
+					let obj = {};
+					obj.itemName = exSell[i].itemName;
+					obj.price = exSell[i].maxPricedBid[0].bidPrice;
+					obj.status = 'Sold';
+					arr1.push(obj);
+				}
+				console.log(arr1);
+				this.setState({ executedOrders: arr1 });
 			})
 			.catch(err => {
 				console.log(err);

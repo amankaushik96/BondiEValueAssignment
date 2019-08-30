@@ -145,7 +145,37 @@ class SideBarContent extends React.Component {
 				);
 			}
 			return arr;
-		} else {
+		} else if (this.props.title === 'Executed Orders') {
+			let arr = [];
+			let items =
+				this.state.userBuyOrders && this.state.userBuyOrders.length > 0
+					? this.state.userBuyOrders
+					: this.props.userBuyOrders;
+			console.log('Itesm', this.props.executedOrders);
+			for (let i in items) {
+				arr.push(
+					<div className="left-navigation-contents-item">
+						<div className="left-navigation-contents-first">
+							Item name: {items[i].itemName}
+						</div>
+
+						<div
+							className="left-navigation-contents-second"
+							style={{ color: 'red' }}
+						>
+							Status: {items[i].status}
+						</div>
+						<div className="left-navigation-contents-second">
+							Price bought: {items[i].price}$
+						</div>
+						<div
+							className="left-navigation-contents-third"
+							style={{ paddingTop: '5px' }}
+						></div>
+					</div>
+				);
+			}
+			return arr;
 		}
 	}
 	render() {
