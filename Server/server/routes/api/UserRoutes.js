@@ -664,6 +664,7 @@ module.exports = app => {
       .then(err => {});
   });
   app.post('/api/account/getExecutedOrdersForAUser', (req, res, next) => {
+    let { email, token } = req.body;
     UserSession.find(
       {
         _id: token,
@@ -682,9 +683,82 @@ module.exports = app => {
             message: 'Unauthorized'
           });
         } else {
-          Products.find({});
+          Products.find({})
+            .then(products => {
+              let executedBuy = [],
+                unExecuted = [],
+                executedSell = [];
+              if (products && products.length > 0) {
+                for (let i in products) {
+                  if (
+                    products[i].email === email &&
+                    products[i].executionStatus
+                  ) {
+                    executedSell.push(products[i]);
+                  } else if (
+                    products[i].email !== email &&
+                    products[i].executionStatus
+                  ) {
+                    if (products[i].maxPricedBid[0].email === email) {
+                      executedBuy.push(products[i]);
+                    }
+                  } else if (products[i].email === email) {
+                    unExecuted.push(products[i]);
+                  }
+                }
+                return res.send({
+                  executedBuy,
+                  executedSell,
+                  unExecuted
+                });
+              } else {
+                return res.send({
+                  success: false,
+                  message: 'No products available'
+                });
+              }
+            })
+            .catch(err => {
+              return res.send({
+                message: 'Internal Server Error',
+                success: false
+              });
+            });
         }
       }
     );
+  });
+  app.get('/api/account/getAllExecuted', (req, res, next) => {
+    console.log('here');
+    Products.find({})
+      .then(products => {
+        let executed = [],
+          unExecuted = [];
+        if (products && products.length > 0) {
+          for (let i in products) {
+            if (products[i].executionStatus) {
+              executed.push(products[i]);
+            } else {
+              unExecuted.push(products[i]);
+            }
+          }
+          return res.send({
+            success: true,
+            exe: executed,
+            unEx: unExecuted
+          });
+        } else {
+          return res.send({
+            success: false,
+            message: 'No prods available'
+          });
+        }
+      })
+      .catch(err => {
+        return res.send({
+          success: false,
+          message: 'Internal Server Error'
+        });
+      });
   });
 };
