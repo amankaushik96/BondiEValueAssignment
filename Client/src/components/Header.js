@@ -26,7 +26,8 @@ class Header extends React.Component {
 								isloggedin: true,
 								user_id: res.data.userID,
 								firstName: res.data.firstName,
-								lastName: res.data.lastName
+								lastName: res.data.lastName,
+								email: res.data.email
 							});
 						} else alert(res.data.message);
 					});

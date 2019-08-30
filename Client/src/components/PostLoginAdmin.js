@@ -61,6 +61,8 @@ class PostLoginAdmin extends React.Component {
 						this.props.location.state.lastName.toUpperCase() +
 						' (admin)'
 					}
+					isAdmin="true"
+					email={this.props.location.state.email}
 				/>
 				<div className="main-content">
 					<SideBarContent
