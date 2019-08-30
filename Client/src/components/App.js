@@ -6,6 +6,7 @@ import history from '../History';
 import { Router, Switch, Route } from 'react-router-dom';
 import SiderBar from './Sidebar';
 import UserComponent from './UserComponent';
+import PostLoginAdmin from './PostLoginAdmin';
 
 class App extends React.Component {
 	state = { path: '' };
@@ -16,6 +17,11 @@ class App extends React.Component {
 				<Router history={history}>
 					<Switch>
 						<Route path="/signup" exact component={Signup} />
+						<Route
+							path="/admin/:id"
+							exact
+							component={PostLoginAdmin}
+						/>
 						<Route path="/" exact component={Login} />
 						<Route
 							path="/login/:id"

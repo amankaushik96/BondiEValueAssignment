@@ -7,7 +7,17 @@
 
 	align-items: center;
 }
-
+.signin-button-admin {
+	background-color: #007bff;
+	padding: 5px;
+	margin: 0;
+	border: none;
+	color: #fff;
+	left: 20px;
+	position: fixed;
+	border-radius: 0.25rem;
+	overflow: hidden;
+}
 .signin-button {
 	background-color: #007bff;
 	padding: 5px;

@@ -176,6 +176,63 @@ class SideBarContent extends React.Component {
 				);
 			}
 			return arr;
+		} else if (this.props.title === 'All Executed Orders List') {
+			let items = this.props.allExecutedItems,
+				arr = [];
+			for (let i in items) {
+				arr.push(
+					<div className="left-navigation-contents-item">
+						<div className="left-navigation-contents-first">
+							Item name: {items[i].itemName}
+						</div>
+
+						<div className="left-navigation-contents-second">
+							Total Bid Users: {items[i].totalBidUsers}
+						</div>
+						<div className="left-navigation-contents-second">
+							Sold By: {items[i].soldBy}
+						</div>
+						<div className="left-navigation-contents-second">
+							Original Selling Price:{' '}
+							{items[i].originalSellingPrice}$
+						</div>
+						<div className="left-navigation-contents-second">
+							Bought By: {items[i].boughtBy}
+						</div>
+						<div className="left-navigation-contents-second">
+							Buying Price: {items[i].boughtAt}$
+						</div>
+						<div className="left-navigation-contents-second">
+							Order ID: {items[i].orderID}
+						</div>
+					</div>
+				);
+			}
+			return arr;
+		} else if (this.props.title === 'All Un-Executed Orders List') {
+			let items = this.props.allUnExecutedItems,
+				arr = [];
+			for (let i in items) {
+				arr.push(
+					<div className="left-navigation-contents-item">
+						<div className="left-navigation-contents-first">
+							Item name: {items[i].itemName}
+						</div>
+
+						<div className="left-navigation-contents-second">
+							Seller: {items[i].soldBy}
+						</div>
+						<div className="left-navigation-contents-second">
+							Order ID: {items[i].orderID}
+						</div>
+						<div className="left-navigation-contents-second">
+							Price:
+							{items[i].price}$
+						</div>
+					</div>
+				);
+			}
+			return arr;
 		}
 	}
 	render() {
@@ -183,7 +240,9 @@ class SideBarContent extends React.Component {
 			<div className="left-navigation">
 				<div className="left-navigation-header">
 					<img src="../ic-arrow-drop-down.svg" alt="none" />
-					<div>{this.props.title}</div>
+					<div style={{ fontWeight: 'bold', fontSize: '18px' }}>
+						{this.props.title}
+					</div>
 				</div>
 				<div className="left-navigation-contents">
 					{this.renderList()}
