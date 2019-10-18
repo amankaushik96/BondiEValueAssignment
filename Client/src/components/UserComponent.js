@@ -146,7 +146,7 @@ class UserComponent extends React.Component {
 				console.log(err);
 			});
 	}
-	componentDidMount() {
+	componentWillMount() {
 		if (
 			!this.props.location.state ||
 			!this.props.location.state.isloggedin
